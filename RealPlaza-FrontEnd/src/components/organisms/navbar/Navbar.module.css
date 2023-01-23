@@ -1,0 +1,9 @@
+.container {  
+  background-color: var(--bg-color-organism);
+  width: 100%;
+  display: flex;
+}
+
+.logo {
+  margin: 20px;
+}

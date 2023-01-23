@@ -1,0 +1,10 @@
+.panel{
+  padding: 15px;  
+  color:var(--textColor);
+  background-color: var(--bg-color-organism);
+  display: grid;
+  border-radius: 5px;
+  position: relative;  
+  height: 100%;    
+  flex: 0.3
+}

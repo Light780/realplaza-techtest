@@ -1,0 +1,19 @@
+.paginationButton {
+  color: var(--grayed);
+  font-weight: bold;
+  font-size: 25px;
+  border: none;
+  background-color: transparent;
+}
+
+.paginationButton:hover {
+  cursor: pointer;
+}
+
+.active {
+  border: 1px solid var(--primary);
+  border-radius: 100%;
+  padding: 0px 8px;
+  color:white;
+  background-color: var(--primary);
+}

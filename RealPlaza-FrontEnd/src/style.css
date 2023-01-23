@@ -1,0 +1,12 @@
+:root {
+    --textColor: #333;
+    --primary: #7300e0;
+    --grayed: #757575;
+    --bg-color-organism: #c3c3c3;
+    --inputColor: #999
+  }
+
+body
+{
+    margin:0px;
+}
