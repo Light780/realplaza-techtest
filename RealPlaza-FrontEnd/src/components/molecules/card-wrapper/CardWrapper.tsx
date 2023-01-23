@@ -3,7 +3,7 @@ import { isProduct, productCard } from '../../../helpers'
 import styles from './CardWrapper.module.css'
 
 interface CardWrapperProps<T> {
-  data: T[]
+  data?: T[]
 }
 
 export const CardWrapper = <T extends object>({ data }: CardWrapperProps<T>): ReactElement => {
@@ -14,7 +14,7 @@ export const CardWrapper = <T extends object>({ data }: CardWrapperProps<T>): Re
   return (
     <div className={styles.wrapper}>
       {
-        data.map(element => cardSwitch(element))
+        data?.map(element => cardSwitch(element))
       }
     </div>
   )
