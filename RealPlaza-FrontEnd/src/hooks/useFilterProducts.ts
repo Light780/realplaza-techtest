@@ -16,7 +16,7 @@ interface UseFilterProducts {
   onSelectPage: Function
 }
 
-export const useFilterProducts = (reset: boolean = false): UseFilterProducts => {
+export const useFilterProducts = (reset?: boolean): UseFilterProducts => {
   const { state, dispatch } = useContext(RealPlazaContext)
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(0)
@@ -98,17 +98,19 @@ export const useFilterProducts = (reset: boolean = false): UseFilterProducts => 
     dispatch(action)
   }
 
-  useEffect(() => {
-    if (state.products?.data != null) {
-      if (reset) {
-        setMin(state.products.otherFields.minPrice)
-        setMax(state.products.otherFields.maxPrice)
+  if (reset != null) {
+    useEffect(() => {
+      if (state.products?.data != null) {
+        if (reset) {
+          setMin(state.products.otherFields.minPrice)
+          setMax(state.products.otherFields.maxPrice)
+        }
+      } else {
+        setMin(0)
+        setMax(0)
       }
-    } else {
-      setMin(0)
-      setMax(0)
-    }
-  }, [state.isLoading])
+    }, [state.isLoading])
+  }
 
   return {
     min,
