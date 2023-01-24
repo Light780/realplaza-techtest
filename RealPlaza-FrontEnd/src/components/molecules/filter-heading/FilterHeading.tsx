@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { Span } from '../../atoms'
 import styles from './FilterHeading.module.css'
-interface FilterHeadingProps {
+
+export interface FilterHeadingProps {
   totalRecords?: number
 }
 

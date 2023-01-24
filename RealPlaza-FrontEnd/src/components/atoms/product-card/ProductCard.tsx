@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { ProductDTO } from '../../../types/product'
 import styles from './ProductCard.module.css'
 
-interface ProductCardProps {
+export interface ProductCardProps {
   product: ProductDTO
 }
+
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <div className={styles.card}>

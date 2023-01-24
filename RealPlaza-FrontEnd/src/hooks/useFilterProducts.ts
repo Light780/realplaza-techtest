@@ -3,7 +3,7 @@ import { RealPlazaContext } from '../context'
 import { ProductAction, ProductActionType } from '../context/reducers'
 import { PagedResponse, ProductDTO } from '../types'
 
-interface UseFilterProducts {
+export interface UseFilterProducts {
   min: number
   max: number
   totalRecords?: number

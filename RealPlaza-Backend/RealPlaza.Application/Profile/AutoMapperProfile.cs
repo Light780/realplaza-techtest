@@ -14,8 +14,9 @@ namespace RealPlaza.Application
         public AutoMapperProfile()
         {         
             CreateMap<Product, ProductGetResponse>()
+                .ForMember(p => p.Id, y => y.MapFrom(p => p.Id.ToString()))
                 .ForMember(p => p.PriceWithDiscount, y => y.MapFrom(p => p.Price * (100 - p.Discount) / 100 ))
-                .ForMember(p => p.ImageUrl, y => y.MapFrom(p => p.Images.FirstOrDefault()));
+                .ForMember(p => p.ImageUrl, y => y.MapFrom(p => p.Images.FirstOrDefault()!.Url));
         }
     }
 }

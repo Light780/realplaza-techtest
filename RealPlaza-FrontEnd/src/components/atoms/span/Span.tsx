@@ -1,7 +1,7 @@
 import { ReactNode, FC } from 'react'
 import styles from './Span.module.css'
 
-interface SpanProps {
+export interface SpanProps {
   children: ReactNode
   soft?: boolean
 }

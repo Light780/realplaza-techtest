@@ -3,7 +3,8 @@ import { useFilterProducts } from '../../../hooks/useFilterProducts'
 import { MultiRangeSlider } from '../../atoms'
 import { Filter, FilterHeading } from '../../molecules'
 import styles from './PanelFilter.module.css'
-interface PanelFilterProps {
+
+export interface PanelFilterProps {
   reset: boolean
 }
 export const PanelFilter: FC<PanelFilterProps> = ({ reset }) => {

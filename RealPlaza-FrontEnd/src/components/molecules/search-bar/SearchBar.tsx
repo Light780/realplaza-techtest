@@ -1,20 +1,23 @@
 import { ChangeEvent, useState, FC, KeyboardEvent } from 'react'
 import { IconButton, Input } from '../../atoms'
-
 import styles from './SearchBar.module.css'
 
-interface SearchBarProps {
+export interface SearchBarProps {
   name: string
   onSearch: Function
 }
+
 export const SearchBar: FC<SearchBarProps> = ({ name, onSearch }) => {
   const [searchText, setSearchText] = useState('')
+
   const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearchText(e.target.value)
   }
+
   const onClear = (): void => {
     setSearchText('')
   }
+
   return (
     <div className={styles.searchBar}>
       <Input

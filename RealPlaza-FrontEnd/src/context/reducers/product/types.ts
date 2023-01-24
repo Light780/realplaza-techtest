@@ -16,5 +16,6 @@ export enum ProductActionType {
   FILTER_CHANGED,
   LOADING,
   LOADED,
-  ERROR
+  ERROR,
+  DEFAULT
 }

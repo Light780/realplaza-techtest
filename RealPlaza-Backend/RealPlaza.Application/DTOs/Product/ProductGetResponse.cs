@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RealPlaza.Application.DTOs.Product
+﻿namespace RealPlaza.Application.DTOs.Product
 {
     public class ProductGetResponse
     {
+        public string Id { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string BrandName { get; set; } = null!;
         public string SellerName { get; set; } = null!;

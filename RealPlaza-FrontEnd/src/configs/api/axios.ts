@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getEnviroments } from '../getEnviroments'
+import { getEnviroments } from '../../helpers/getEnviroments'
 
 const env = getEnviroments()
 

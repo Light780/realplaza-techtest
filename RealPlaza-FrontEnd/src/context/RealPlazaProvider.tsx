@@ -2,7 +2,7 @@ import { FC, ReactNode, useReducer } from 'react'
 import { RealPlazaContext } from './RealPlazaContext'
 import { initialState, productReducer } from './reducers'
 
-interface RealPlazaProviderProps {
+export interface RealPlazaProviderProps {
   children: ReactNode
 }
 

@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { PaginationButton } from '../../atoms'
 import styles from './Pagination.module.css'
-interface PaginationProps {
+
+export interface PaginationProps {
   nextPage?: string
   previousPage?: string
   totalPages: number
@@ -11,6 +12,7 @@ interface PaginationProps {
   onPreviosPage: Function
 
 }
+
 export const Pagination: FC<PaginationProps> = ({ nextPage, previousPage, totalPages, pageNumber, onNextPage, onPreviosPage, onClick }) => {
   const pages: number[] = []
   for (let i = 1; i <= totalPages; i++) {
@@ -18,9 +20,9 @@ export const Pagination: FC<PaginationProps> = ({ nextPage, previousPage, totalP
   }
 
   return (
-    <div className={styles['pagination-container']}>
+    <div aria-label='pagination' className={styles['pagination-container']}>
       <>
-        <PaginationButton disabled={previousPage === null} onClick={onPreviosPage}>&lt;</PaginationButton>
+        <PaginationButton disabled={previousPage === undefined} onClick={onPreviosPage}>&lt;</PaginationButton>
         {
           pages.map(index => {
             return (
@@ -30,7 +32,7 @@ export const Pagination: FC<PaginationProps> = ({ nextPage, previousPage, totalP
             )
           })
         }
-        <PaginationButton disabled={nextPage === null} onClick={onNextPage}>&gt;</PaginationButton>
+        <PaginationButton disabled={nextPage === undefined} onClick={onNextPage}>&gt;</PaginationButton>
       </>
     </div>
   )

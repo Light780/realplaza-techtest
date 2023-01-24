@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState, useRef, FC, ChangeEvent } from 'react
 import classnames from 'classnames'
 import styles from './MultiRangeSlider.module.css'
 
-interface MultiRangeSliderProps {
+export interface MultiRangeSliderProps {
   min: number
   max: number
   symbol: string
@@ -62,6 +62,7 @@ export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({ max, min, onChange
     <div className={styles.container}>
       <input
         type='range'
+        aria-label='min'
         min={min}
         max={max}
         value={minVal}
@@ -79,6 +80,7 @@ export const MultiRangeSlider: FC<MultiRangeSliderProps> = ({ max, min, onChange
         type='range'
         min={min}
         max={max}
+        aria-label='max'
         value={maxVal}
         ref={maxValRef}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {

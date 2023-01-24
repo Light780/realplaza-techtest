@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react'
 import { Span } from '../../atoms'
 import styles from './Filter.module.css'
 
-interface FilterProps {
+export interface FilterProps {
   text: string
   children: ReactNode
 }

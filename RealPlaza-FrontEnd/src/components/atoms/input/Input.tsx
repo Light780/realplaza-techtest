@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, KeyboardEvent } from 'react'
 import styles from './Input.module.css'
 
-interface InputProps {
+export interface InputProps {
   name: string
   placeholder: string
   value: string

@@ -7,6 +7,7 @@ export interface ProductGetRequest extends QueryParameters {
 }
 
 export interface ProductDTO {
+  id: string
   name: string
   brandName: string
   price: number
