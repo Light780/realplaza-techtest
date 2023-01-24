@@ -12,18 +12,10 @@ namespace RealPlaza.Application
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
-        {
+        {         
             CreateMap<Product, ProductGetResponse>()
-                .ConstructUsing(p => new ProductGetResponse(
-                p.Name,
-                p.SellerName,
-                p.BrandName,
-                p.Price,
-                p.Discount,
-                p.Price * ((100 - p.Discount) / 100),
-                p.PickupFree,
-                p.Images.Select(i => i.Url).FirstOrDefault()
-                ));
+                .ForMember(p => p.PriceWithDiscount, y => y.MapFrom(p => p.Price * (100 - p.Discount) / 100 ))
+                .ForMember(p => p.ImageUrl, y => y.MapFrom(p => p.Images.FirstOrDefault()));
         }
     }
 }

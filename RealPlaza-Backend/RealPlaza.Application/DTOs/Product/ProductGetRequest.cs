@@ -7,5 +7,10 @@ using System.Threading.Tasks;
 
 namespace RealPlaza.Application.DTOs.Product
 {
-    public record ProductGetRequest(string Name, decimal MinPrice, decimal MaxPrice) : QueryParameters;
+    public class ProductGetRequest : QueryParameters 
+    {
+        public string Name { get; set; } = null!;
+        public decimal MinPrice { get; set; }
+        public decimal MaxPrice { get; set; }
+    } 
 }

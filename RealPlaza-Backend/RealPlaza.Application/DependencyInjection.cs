@@ -13,7 +13,7 @@ namespace RealPlaza.Application
     {
         public static IServiceCollection AddApplicationLayer(this IServiceCollection services)
         {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(Assembly.GetEntryAssembly());
             services.AddScoped<IProductService, ProductService>();            
             return services;
         }

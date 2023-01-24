@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealPlaza.Application.Parameters
 {
-    public record QueryParameters
+    public class QueryParameters
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }

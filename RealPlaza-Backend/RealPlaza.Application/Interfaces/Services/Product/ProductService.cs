@@ -20,22 +20,7 @@ namespace RealPlaza.Application.Interfaces.Services.Product
 
         public async Task<PagedResponse<List<ProductGetResponse>>> GetProducts(ProductGetRequest request)
         {
-            List<ValidationFailure> failures = new();
-
-            if (string.IsNullOrEmpty(request.Name))
-                failures.Add(new ValidationFailure("Name", "Name can not be empty"));
-
-            if (request.PageNumber <= 0)
-                failures.Add(new ValidationFailure("PageNumber", "PageNumber cannot be less than or equal to 0"));
-
-            if(request.PageSize <= 0)
-                failures.Add(new ValidationFailure("PageSize", "PageSize cannot be less or equal to 0"));
-
-            if (request.MinPrice < 0)
-                failures.Add(new ValidationFailure("MinPrice", "MinPrice cannot be less than 0"));
-
-            if (request.MaxPrice < 0)
-                failures.Add(new ValidationFailure("MaxPrice", "MaxPrice cannot be less than 0"));
+            var failures = ValidateRequest(request);
 
             if (failures.Count > 0)
                 throw new ValidationException(failures);
@@ -49,12 +34,48 @@ namespace RealPlaza.Application.Interfaces.Services.Product
             );
             
             var productResponseList = _mapper.Map<List<ProductGetResponse>>(data);
+
             var fields = new
             {
                 MaxPrice = maxPrice,
                 MinPrice = minPrice,
             };
+
             return new PagedResponse<List<ProductGetResponse>>(productResponseList, request.PageNumber, request.PageSize, totalRecords, fields);
+        }
+
+        public List<ValidationFailure> ValidateRequest(ProductGetRequest request)
+        {
+            List<ValidationFailure> failures = new();
+
+            if (string.IsNullOrEmpty(request.Name))
+                failures.Add(new ValidationFailure("Name", "Name can not be empty"));
+
+            if (request.PageNumber <= 0)
+                failures.Add(new ValidationFailure("PageNumber", "PageNumber cannot be less than or equal to 0"));
+
+            if (request.PageSize <= 0)
+                failures.Add(new ValidationFailure("PageSize", "PageSize cannot be less or equal to 0"));
+
+            if (request.MinPrice < 0)
+                failures.Add(new ValidationFailure("MinPrice", "MinPrice cannot be less than 0"));
+
+            if (request.MaxPrice < 0)
+                failures.Add(new ValidationFailure("MaxPrice", "MaxPrice cannot be less than 0"));
+
+            if (request.MinPrice > request.MaxPrice)
+                failures.Add(new ValidationFailure("MinPrice", "MinPrice cannot be greater than MaxPrice"));
+
+            if (request.MaxPrice < request.MinPrice)
+                failures.Add(new ValidationFailure("MaxPrice", "MaxPrice cannot be less than MinPrice"));
+
+            if (request.PageSize < 0)
+                failures.Add(new ValidationFailure("PageSize", "PageSize cannot be less than 0"));
+
+            if (request.PageNumber <= 0)
+                failures.Add(new ValidationFailure("PageNumber", "PageNumber cannot be less than or equal to 0"));
+
+            return failures;
         }
     }
 }
